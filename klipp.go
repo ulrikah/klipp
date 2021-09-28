@@ -14,24 +14,25 @@ func main() {
     for _, file := range files {
         log.Println(file.Name(), "is directory?", file.IsDir())
     }
-
-	tmpfile, err := ioutil.TempFile("", "tempfile")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer os.Remove(tmpfile.Name()) // clean up
-
+    
+    tmpfile, err := ioutil.TempFile("", "tempfile")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer os.Remove(tmpfile.Name()) // clean up
+    
     message := []byte("\n\n\tHello World\n\n")
-	if _, err := tmpfile.Write(message); err != nil {
-		log.Fatal(err)
-	}
-	if err := tmpfile.Close(); err != nil {
-		log.Fatal(err)
-	}
-
+    if _, err := tmpfile.Write(message); err != nil {
+        log.Fatal(err)
+    }
+    if err := tmpfile.Close(); err != nil {
+        log.Fatal(err)
+    }
+    
     content, err := ioutil.ReadFile(tmpfile.Name())
     log.Printf("File contents: %s", content)
-	if err != nil {
-		log.Fatal(err)
-	}    
-}
+    if err != nil {
+        log.Fatal(err)
+        }    
+    }
+    

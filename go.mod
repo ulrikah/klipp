@@ -1,4 +1,4 @@
-module ulrikah/klipp
+module klipp
 
 go 1.17
 

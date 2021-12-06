@@ -28,6 +28,18 @@ func (k Klipp) Read(noteName string) string {
 	}
 }
 
+func (k Klipp) GetNoteNames() []string {
+	files, err := ioutil.ReadDir(k.HomeDir)
+	if err != nil {
+		log.Fatal(err)
+	}
+	filenames := make([]string, len(files))
+	for _, file := range files {
+		filenames = append(filenames, file.Name())
+	}
+	return filenames
+}
+
 func (k Klipp) Write(note string) string {
 	// Writes to a specified note from the clipboard
 
